@@ -1,0 +1,16 @@
+/* twitch-container {
+  display:block;
+} */
+
+body {
+  background-color:#271e27
+}
+
+article {
+  display: inline-block;
+}
+
+/* twitchNameSearch { this does not work
+  background-color:#362e37;
+  color:#362e37;
+} */

@@ -1,0 +1,139 @@
+<!-- Run python local host first before testing -->
+<!--
+  cd  Documents/html_and_js/httpsServer/TwitchMinEmbed
+  python3 -m http.server
+-->
+
+<head>
+<link rel="stylesheet" href="main.css">
+</head>
+<html>
+  <title>Twitch Test Tab</title>
+  <body>
+
+    <!-- Submit box -->
+    <input
+      style="background-color:#362e37;
+            text-color:#000000"
+      type="search"
+      id="twitchNameSearch"
+      placeholder="Enter twitch name"
+      value=''>
+    <!-- button to submit stream name -->
+    <button type="button"
+      id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
+    </button>
+
+    <button type="button" id="clearAllArticles"
+      onclick="clearAll()">Clear all Streams
+    </button>
+
+    <!-- Testing output purposes -->
+    <p id="test_input"></p>
+
+    <!-- Add a placeholder for the Twitch embed -->
+    <!-- This is containerLvl1 -->
+    <section id="twitch-container"></section>
+
+    <!-- Load the Twitch embed script -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+<!-- TODO "clear all" -->
+<!-- TODO remove iframe auto based on status? getEnded() in embed? -->
+  <!-- Either in link or internally, link seems more feasible -->
+<!-- TODO change txt color in search box -->
+  <!-- Unable to figure out why text does not change colors, even with   -->
+<!-- TODO clear input box (look for TODO)-->
+  <!-- Unable to clear for some reason -->
+<!-- TODO remove twitch overlay and add my own with just cancel and maybe refresh -->
+<!-- TODO save previously listed streams -->
+<!-- TODO Learn how to implement REACT and get both html and js to work together -->
+
+    <script type="text/javascript">
+      console.log("script initi");
+
+      // Add addEventListener to textbox to allow it to be "Enter"able
+      document.getElementById('twitchNameSearch').addEventListener(
+        "keypress", function(enter) {
+          // event.preventDefault();
+          if (enter.key === 'Enter') {
+            document.getElementById("submitButton").click();
+          }
+        }
+      )
+
+      // Adding embed of stream
+      function addEmbed(channelName){
+        // Clears submit box TODO broken
+        // console.log("Clearing box")
+        // document.getElementById(twitchNameSearch).value='';
+
+        // if stream already exists or not
+        if (document.getElementById(channelName+'ID') !== null) {
+          console.log("caught, skipping")
+        } else {
+          console.log("not caught, creating")
+          // Creating stream name id string
+          var channelnameStreamDivID = channelName + 'ID'
+
+          // Setting variables for name ID to hold button name
+          // console.log("starting function for " + channelName);
+          var channelnameButtonID = channelName + "button"
+
+          // Creating containerLvl2 and set naming ID
+          // console.log("creating div");
+          var newTwitchEmbed = document.createElement('article');
+          newTwitchEmbed.id = channelnameStreamDivID;
+
+          // Creating button element
+          // console.log("creating button");
+          var butt = document.createElement('BUTTON');
+          butt.id=channelnameButtonID;
+
+          // Creating and setting embed containerLvl2 into containerLvl1
+          // console.log("embedding new div into container")
+          document.getElementById("twitch-container").appendChild(newTwitchEmbed);
+
+          // Creating embed
+          // console.log("creating embed");
+          var embed = new Twitch.Embed(channelnameStreamDivID, {
+            width: 284,
+            height: 160,
+            channel: channelName,
+            layout: "video",
+            parent: ["embed.example.com", "othersite.example.com"]
+          });
+
+          // console.log('testing channel name button id')
+          // console.log(channelnameButtonID);
+
+          // Adding button listener event
+          // console.log("creating button listener");
+          butt.addEventListener('click',() => {
+            // console.log('click');
+            document.getElementById(channelnameStreamDivID).remove();
+            document.getElementById(channelnameButtonID).remove();
+          })
+
+          // Appending button into ContainerLvl2
+          // console.log("appending button");
+          document.getElementById(channelnameStreamDivID).appendChild(butt);
+          // console.log("button appended");
+
+          // Setting embed settings
+          // console.log("creating embed listener");
+          embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+            var player = embed.getPlayer();
+            player.setQuality("160p");
+            player.setVolume("0.01");
+            player.play();
+          });
+        }
+      }
+
+      function clearAll() {
+
+      }
+    </script>
+  </body>
+</html>
