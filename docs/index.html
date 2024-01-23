@@ -8,17 +8,17 @@
 <link rel="stylesheet" href="main.css">
 </head>
 <html>
-  <title>Twitch Test Tab</title>
+  <title>MinTwitch</title>
   <body>
 
     <!-- Submit box -->
     <input
-      style="background-color:#362e37;
-            text-color:#000000"
+      style="
+        <!-- background-color:#362e37; -->
+        text-color:#000000"
       type="search"
       id="twitchNameSearch"
-      placeholder="Enter twitch name"
-      value=''>
+      placeholder="Enter twitch name">
     <!-- button to submit stream name -->
     <button type="button"
       id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
@@ -39,12 +39,14 @@
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
 <!-- TODO "clear all" -->
+<!-- TODO Put search in header -->
 <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
   <!-- Either in link or internally, link seems more feasible -->
 <!-- TODO change txt color in search box -->
   <!-- Unable to figure out why text does not change colors, even with   -->
 <!-- TODO clear input box (look for TODO)-->
   <!-- Unable to clear for some reason -->
+<!-- TODO add donation -->
 <!-- TODO remove twitch overlay and add my own with just cancel and maybe refresh -->
 <!-- TODO save previously listed streams -->
 <!-- TODO Learn how to implement REACT and get both html and js to work together -->
@@ -65,8 +67,6 @@
       // Adding embed of stream
       function addEmbed(channelName){
         // Clears submit box TODO broken
-        // console.log("Clearing box")
-        // document.getElementById(twitchNameSearch).value='';
 
         // if stream already exists or not
         if (document.getElementById(channelName+'ID') !== null) {
@@ -89,8 +89,8 @@
           // console.log("creating button");
           var butt = document.createElement('BUTTON');
           butt.id=channelnameButtonID;
-          butt.value="x";
-          // test
+          // console.log("alt x:");
+          butt.innerHTML="x";
 
           // Creating and setting embed containerLvl2 into containerLvl1
           // console.log("embedding new div into container")
@@ -120,7 +120,9 @@
           // Appending button into ContainerLvl2
           // console.log("appending button");
           document.getElementById(channelnameStreamDivID).appendChild(butt);
-          // console.log("button appended");
+          // console.log("attempting to add x");
+          // document.getElementById(channelnameButtonID).innerHTML="x";
+          // console.log("x appended");
 
           // Setting embed settings
           // console.log("creating embed listener");
@@ -131,10 +133,14 @@
             player.play();
           });
         }
+
+        console.log("Clearing box")
+        document.getElementById(twitchNameSearch).innerHTML.clear();
       }
 
       function clearAll() {
-
+        console.log('clearing');
+        document.getElementById(twitch-container).clear();
       }
     </script>
   </body>
