@@ -25,7 +25,7 @@
     </button>
 
     <button type="button" id="clearAllArticles"
-      onclick="clearAll()">Clear all Streams (WIP)
+      onclick="clearAll()">Clear all Streams
     </button>
 
     <!-- Testing output purposes -->
@@ -38,8 +38,8 @@
     <!-- Load the Twitch embed script -->
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-<!-- TODO "clear all" -->
 <!-- TODO Put search in header -->
+<!-- TODO Autodrop twitch names? -->
 <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
   <!-- Either in link or internally, link seems more feasible -->
 <!-- TODO change txt color in search box -->
@@ -134,13 +134,20 @@
           });
         }
 
-        console.log("Clearing box")
-        document.getElementById(twitchNameSearch).innerHTML.clear();
+        console.log("Clearing textbox");
+        // not working
+        document.getElementById('twitchNameSearch').innerHTML='';        console.log("Cleared?");
       }
 
       function clearAll() {
-        console.log('clearing');
-        document.getElementById(twitch-container).clear();
+        // console.log('clearing?');
+        // not getting through
+        while (document.getElementById('twitch-container').firstElementChild) {
+          document.getElementById('twitch-container').firstElementChild.remove();
+          // console.log('removed '+document.getElementById('twitch-container').firstElementChild.id)
+        }
+        // document.getElementById('twitch-container').clear();
+        // console.log('cleared?')
       }
     </script>
   </body>
