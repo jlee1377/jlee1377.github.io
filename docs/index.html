@@ -10,27 +10,27 @@
 <html>
   <title>MinTwitch</title>
   <body>
+    <div class="header" id="header">
+      <!-- Submit box -->
+      <input
+        style="
+          <!-- background-color:#362e37; -->
+          text-color:#000000"
+        type="search"
+        id="twitchNameSearch"
+        placeholder="Enter twitch name">
+      <!-- button to submit stream name -->
+      <button type="button"
+        id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
+      </button>
 
-    <!-- Submit box -->
-    <input
-      style="
-        <!-- background-color:#362e37; -->
-        text-color:#000000"
-      type="search"
-      id="twitchNameSearch"
-      placeholder="Enter twitch name">
-    <!-- button to submit stream name -->
-    <button type="button"
-      id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
-    </button>
+      <button type="button" id="clearAllArticles"
+        onclick="clearAll()">Clear all Streams
+      </button>
 
-    <button type="button" id="clearAllArticles"
-      onclick="clearAll()">Clear all Streams
-    </button>
-
-    <!-- Testing output purposes -->
-    <p id="test_input"></p>
-
+      <!-- Testing output purposes -->
+      <p id="test_input"></p>
+    </div>
     <!-- Add a placeholder for the Twitch embed -->
     <!-- This is containerLvl1 -->
     <section id="twitch-container"></section>
@@ -38,14 +38,13 @@
     <!-- Load the Twitch embed script -->
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-<!-- TODO Put search in header -->
+  <!-- TODO clear input box (look for TODO)-->
+  <!-- TODO change txt color in search box -->
+    <!-- Unable to figure out why text does not change colors, even with   -->
+    <!-- Unable to clear for some reason -->
 <!-- TODO Autodrop twitch names? -->
 <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
   <!-- Either in link or internally, link seems more feasible -->
-<!-- TODO change txt color in search box -->
-  <!-- Unable to figure out why text does not change colors, even with   -->
-<!-- TODO clear input box (look for TODO)-->
-  <!-- Unable to clear for some reason -->
 <!-- TODO add donation -->
 <!-- TODO remove twitch overlay and add my own with just cancel and maybe refresh -->
 <!-- TODO save previously listed streams -->
@@ -63,6 +62,20 @@
           }
         }
       )
+
+      // Keeping sticky header
+      console.log("testing sticky");
+      window.onscroll = function() {stickyHeader()};
+      var header = document.getElementById("header");
+      var sticky = header.offsetTop;
+
+      function stickyHeader() {
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
 
       // Adding embed of stream
       function addEmbed(channelName){
