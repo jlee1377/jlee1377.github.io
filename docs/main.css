@@ -37,6 +37,11 @@ article {
   padding-top: 40px;
 }
 
+input {
+  background-color:#272727;
+  color:white;
+}
+
 /* .twitchNameSearch { this does not work
   background-color:#362e37;
   color:#362e37;
