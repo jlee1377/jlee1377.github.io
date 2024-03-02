@@ -82,6 +82,9 @@
       function addEmbed(channelName){
         // Clears submit box TODO broken
 
+        document.getElementById('twitchNameSearch').value="";
+        console.log("Cleared textbox?");
+
         // if stream already exists or not
         if (document.getElementById(channelName+'ID') !== null) {
           console.log("caught, skipping")
@@ -147,10 +150,6 @@
             player.play();
           });
         }
-
-        console.log("Clearing textbox");
-        // not working
-        document.getElementById('twitchNameSearch').innerHTML='';        console.log("Cleared?");
       }
 
       function clearAll() {
