@@ -1,17 +1,17 @@
-<!-- TODO change txt color in search box -->
-  <!-- Unable to figure out why text does not change colors, even with   -->
-  <!-- Unable to clear for some reason -->
-<!-- TODO Autodrop twitch names? -->
+<!-- IP Autodrop twitch names -->
+<!-- TODO add donation -->
+<!-- TODO put X on overlay itself (top right of video?) -->
 <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
   <!-- Either in link or internally, link seems more feasible -->
-<!-- TODO add donation -->
 <!-- TODO remove twitch overlay and add my own with just cancel and maybe refresh -->
 <!-- TODO save previously listed streams -->
 <!-- TODO Learn how to implement REACT and get both html and js to work together -->
 
+<!-- BUG at certain heights, can't scroll down enough to see X button as sticky header seems to interfere with going down the litte bit of space -->
+
 <!-- Run python local host first before testing -->
 <!--
-  cd  Documents/html_and_js/httpsServer/TwitchMinEmbed
+  cd Documents/GitHub/TwitchMinEmbed
   python3 -m http.server
 -->
 
@@ -30,6 +30,14 @@
         type="search"
         id="twitchNameSearch"
         placeholder="Enter twitch name">
+
+        <!-- IP input username(s) to find user/stream -->
+      <select class="form-control"
+        id='twitchNameFindElement'
+        name='twitchNameFindElement'
+        onclick="getTwitchId()"></<select>
+      </select>
+
       <!-- button to submit stream name -->
       <button type="button"
         id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
@@ -52,6 +60,9 @@
 
     <script type="text/javascript">
       console.log("script initi");
+
+      // IP add function to auto populate list with user input
+      // document.getElementById('').
 
       // Add addEventListener to textbox to allow it to be "Enter"able
       document.getElementById('twitchNameSearch').addEventListener(
@@ -115,8 +126,8 @@
           // Creating embed
           // console.log("creating embed");
           var embed = new Twitch.Embed(channelnameStreamDivID, {
-            width: 160,
-            height: 90,
+            width: 273,
+            height: 160,
             channel: channelName,
             layout: "video",
             parent: ["embed.example.com", "othersite.example.com"]
