@@ -29,12 +29,22 @@
         id="twitchNameSearch"
         placeholder="Enter twitch name">
 
-        <!-- IP input username(s) to find user/stream -->
+      <!-- IP input username(s) to find user/stream -->
+      <!-- consider textbox first then switch to dropdown -->
+      <span
+        id = "getIdOrList">true or false?</span>
+      <!-- {% if TRUE %}
+      <button type="button"
+        id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">
+        Login
+      </button>
+      {% else%}
       <select class="form-control"
         id='twitchNameFindElement'
         name='twitchNameFindElement'
-        onclick="getTwitchId()"></<select>
+        onclick="getTwitchId()">list</<select>
       </select>
+      {% endif %} -->
 
       <!-- button to submit stream name -->
       <button type="button"
