@@ -27,6 +27,16 @@ function stickyHeader() {
   }
 }
 
+// API login
+function twitchLogin(){
+  const authURL = 'https://id.twitch.tv/oauth2/authorize';
+  const tokeURL = 'https://id.twitch.tv/oauth2/token';
+
+  fetch(
+    // TODO: figure out how to fill this out
+  );
+}
+
 // Adding embed of stream
 function addEmbed(channelName){
 
