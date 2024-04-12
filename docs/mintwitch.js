@@ -28,6 +28,9 @@ function stickyHeader() {
 }
 
 // API login
+var access_token;
+var token_type;
+var authorizationObject;
 function twitchLogin(){
   let clientId = 'ggcot3uct35mk6sgtotwuacv0yqq5b';
   let clientSecret = 'u8da27aoe6cvj85bw454opk5czmfyv';
@@ -41,20 +44,21 @@ function twitchLogin(){
   .then((res) => res.json())
   .then((data) => {
     console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
+    access_token = data.access_token;
+    token_type = data.token_type;
+    let { access_token, data.expires_in, token_type } = authorizationObject;
     return data});
 }
-
 async function getLiveFollowingStreams(){
   const endpoint = 'https://api.twitch.tv/helix/streams';
-
-  try {
+  // try {
     let authorizationObject = await twitchLogin();
-    let { access_token, expires_in, token_type } = authorizationObject;
-
-    //token_type first letter must be uppercase
-    token_type =
-    token_type.substring(0, 1).toUpperCase() +
-    token_type.substring(1, token_type.length);
+    // let { access_token, expires_in, token_type } = authorizationObject;
+    //
+    // //token_type first letter must be uppercase
+    // token_type =
+    // token_type.substring(0, 1).toUpperCase() +
+    // token_type.substring(1, token_type.length);
 
     let authorization = token_type + ' ' + access_token;
 
@@ -71,9 +75,9 @@ async function getLiveFollowingStreams(){
     .then((res) => res.json())
     .then((data) => renderStreams(data));
     console.log('getLiveFollowingStreams finished');
-  } catch (err) {
-    console.error('error: ' + err.message)
-  }
+  // } catch (err) {
+  //   console.error('error: ' + err.message)
+  // }
 }
 function renderStreams(data) {
     console.log(JSON.stringify(data));
