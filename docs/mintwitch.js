@@ -14,7 +14,7 @@ document.getElementById('twitchNameSearch').addEventListener(
 )
 
 // Keeping sticky header
-console.log("testing sticky");
+// console.log("testing sticky");
 window.onscroll = function() {stickyHeader()};
 var header = document.getElementById("header");
 var sticky = header.offsetTop;
@@ -29,12 +29,54 @@ function stickyHeader() {
 
 // API login
 function twitchLogin(){
-  const authURL = 'https://id.twitch.tv/oauth2/authorize';
-  const tokeURL = 'https://id.twitch.tv/oauth2/token';
+  let clientId = 'ggcot3uct35mk6sgtotwuacv0yqq5b';
+  let clientSecret = 'u8da27aoe6cvj85bw454opk5czmfyv';
+  let authURL = 'https://id.twitch.tv/oauth2/authorize';
+  // let tokeURL = 'https://id.twitch.tv/oauth2/token';
+  let url = 'https://id.twitch.tv/oauth2/token?client_id='+clientId+'&client_secret='+clientSecret+'&grant_type=client_credentials';
 
-  fetch(
-    // TODO: figure out how to fill this out
-  );
+  fetch(url, {
+      method: 'POST',
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
+    return data});
+}
+
+async function getLiveFollowingStreams(){
+  const endpoint = 'https://api.twitch.tv/helix/streams';
+
+  try {
+    let authorizationObject = await twitchLogin();
+    let { access_token, expires_in, token_type } = authorizationObject;
+
+    //token_type first letter must be uppercase
+    token_type =
+    token_type.substring(0, 1).toUpperCase() +
+    token_type.substring(1, token_type.length);
+
+    let authorization = token_type + ' ' + access_token;
+
+    console.log(authorization);
+
+    let headers = {
+    authorization,
+    'Client-Id': clientId,
+    };
+
+    fetch(endpoint, {
+    headers,
+    })
+    .then((res) => res.json())
+    .then((data) => renderStreams(data));
+    console.log('getLiveFollowingStreams finished');
+  } catch (err) {
+    console.error('error: ' + err.message)
+  }
+}
+function renderStreams(data) {
+    console.log(JSON.stringify(data));
 }
 
 // Adding embed of stream

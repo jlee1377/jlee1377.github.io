@@ -30,21 +30,23 @@
         placeholder="Enter twitch name">
 
       <!-- IP input username(s) to find user/stream -->
-      <!-- consider textbox first then switch to dropdown -->
-      <span
-        id = "getIdOrList">true or false?</span>
-      <!-- {% if TRUE %}
-      <button type="button"
-        id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">
-        Login
+      <!-- consider login first then switch to dropdown -->
+      <!-- <span
+        id = "getIdOrList">true or false?</span> -->
+      <!-- {% if TRUE %} -->
+      <button
+        type="button"
+        id="submitButton"
+        onclick="getLiveFollowingStreams()">
+        Get follow and live
       </button>
-      {% else%}
-      <select class="form-control"
+      <!-- {% else%} -->
+      <!-- <select class="form-control"
         id='twitchNameFindElement'
         name='twitchNameFindElement'
         onclick="getTwitchId()">list</<select>
-      </select>
-      {% endif %} -->
+      </select> -->
+      <!-- {% endif %} -->
 
       <!-- button to submit stream name -->
       <button type="button"
