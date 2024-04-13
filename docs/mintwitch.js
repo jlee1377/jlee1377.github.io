@@ -46,7 +46,8 @@ function twitchLogin(){
     console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
     access_token = data.access_token;
     token_type = data.token_type;
-    let { access_token, data.expires_in, token_type } = authorizationObject;
+    let { access_token, expires_in, token_type } = authorizationObject;
+
     return data});
 }
 async function getLiveFollowingStreams(){
