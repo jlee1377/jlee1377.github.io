@@ -9,7 +9,7 @@
 
 <!-- Run python local host first before testing -->
 <!--
-  cd Documents/GitHub/jlee1377.gitub.io/docs
+  cd Documents/GitHub/jlee1377.github.io/docs
   python3 -m http.server
 -->
 
@@ -99,16 +99,17 @@
         } else {
           console.log("not caught, creating")
           // Creating stream name id string
-          var channelnameStreamDivID = channelName + 'ID'
+          var channelnameStreamArtID = channelName + 'ID'
 
           // Setting variables for name ID to hold button name
           // console.log("starting function for " + channelName);
           var channelnameButtonID = channelName + "button"
+          console.log(channelnameButtonID);
 
           // Creating containerLvl2 and set naming ID
           // console.log("creating div");
           var newTwitchEmbed = document.createElement('article');
-          newTwitchEmbed.id = channelnameStreamDivID;
+          newTwitchEmbed.id = channelnameStreamArtID;
 
           // Creating button element
           // console.log("creating button");
@@ -123,7 +124,7 @@
 
           // Creating embed
           // console.log("creating embed");
-          var embed = new Twitch.Embed(channelnameStreamDivID, {
+          var embed = new Twitch.Embed(channelnameStreamArtID, {
             width: 368,
             height: 207,
             channel: channelName,
@@ -132,19 +133,19 @@
           });
 
           // console.log('testing channel name button id')
-          // console.log(channelnameButtonID);
+          // console.log("before adding button: " + channelnameButtonID);
 
           // Adding button listener event
           // console.log("creating button listener");
           butt.addEventListener('click',() => {
             // console.log('click');
-            document.getElementById(channelnameStreamDivID).remove();
-            document.getElementById(channelnameButtonID).remove();
+            document.getElementById(channelnameStreamArtID).remove();
+            // document.getElementById(channelnameButtonID).remove();
           })
 
           // Appending button into ContainerLvl2
           // console.log("appending button");
-          document.getElementById(channelnameStreamDivID).appendChild(butt);
+          document.getElementById(channelnameStreamArtID).appendChild(butt);
           // console.log("attempting to add x");
           // document.getElementById(channelnameButtonID).innerHTML="x";
           // console.log("x appended");
