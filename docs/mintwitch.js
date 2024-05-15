@@ -1,8 +1,5 @@
 console.log("script initi");
 
-// IP add function to auto populate list with user input
-// document.getElementById('').
-
 // Add addEventListener to textbox to allow it to be "Enter"able
 document.getElementById('twitchNameSearch').addEventListener(
   "keypress", function(enter) {
@@ -27,6 +24,8 @@ function stickyHeader() {
   }
 }
 
+// IP add function to auto populate list with user input
+// document.getElementById('').
 // API login
 var access_token;
 var token_type;
