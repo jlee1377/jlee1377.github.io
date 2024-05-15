@@ -23,6 +23,7 @@ function getTwitchAuthorization() {
 async function getStreams() {
     const endpoint = "https://api.twitch.tv/helix/streams";
 
+    // *** looks like its let / await that is the async, still seems to be causing some sort of issue on my end even when I use the same terms. Maybe the "authorization" var is important? Same for clientID and how they're "called" in the link above?
     let authorizationObject = await getTwitchAuthorization();
     let { access_token, expires_in, token_type } = authorizationObject;
 

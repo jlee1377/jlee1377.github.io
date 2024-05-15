@@ -56,12 +56,11 @@ async function getLiveFollowingStreams(){
   const endpoint = 'https://api.twitch.tv/helix/streams';
   // try {
     let authorizationObject = await twitchLogin();
-    // let { access_token, expires_in, token_type } = authorizationObject;
-    //
-    // //token_type first letter must be uppercase
-    // token_type =
-    // token_type.substring(0, 1).toUpperCase() +
-    // token_type.substring(1, token_type.length);
+    let { access_token, expires_in, token_type } = authorizationObject;
+    // token_type first letter must be uppercase
+    token_type =
+    token_type.substring(0, 1).toUpperCase() +
+    token_type.substring(1, token_type.length);
 
     let authorization = token_type + ' ' + access_token;
 
