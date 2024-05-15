@@ -1,3 +1,6 @@
+// cd Documents/GitHub/jlee1377.github.io/docs
+// python3 -m http.server
+
 console.log("script initi");
 
 // Add addEventListener to textbox to allow it to be "Enter"able
