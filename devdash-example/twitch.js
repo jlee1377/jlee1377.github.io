@@ -1,8 +1,10 @@
 /*
-  cd Documents/GitHub/jlee1377.github.io/devdash-example
+  cd Documents/GitHub/jlee1377.github.io/"devdash-example"
   python3 -m http.server
 */
 
+// Files from this folder copied from following link
+// https://devsdash.com/tutorials/twitch-api-javascript
 let clinetId = "ggcot3uct35mk6sgtotwuacv0yqq5b"; //my info, remove later
 let clinetSecret = "u8da27aoe6cvj85bw454opk5czmfyv"; // my info, remove later
 
