@@ -96,7 +96,9 @@ function addEmbed(channelName){
 
   // if stream already exists or not
   if (document.getElementById(channelName+'ID') !== null) {
-    // console.log("caught, skipping")
+    // console.log("caught, refreshing")
+    document.getElementById(channelName + 'ID').remove();
+    addEmbed(channelName);
   } else {
     // console.log("not caught, creating")
     // Creating stream name id string
@@ -151,6 +153,8 @@ function addEmbed(channelName){
     refreshButt.addEventListener('click',()=>{
       // TODO
       console.log("testing refresh");
+      document.getElementById(channelName + 'ID').remove();
+      addEmbed(channelName);
     })
 
     // Appending button into ContainerLvl2
