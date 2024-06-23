@@ -146,12 +146,11 @@ function addEmbed(channelName){
     closeButt.addEventListener('click',() => {
       // console.log('click');
       document.getElementById(channelnameStreamDivID).remove();
-      document.getElementById(channelnameButtonIDclose).remove();
-      document.getElementById(channelnameButtonIDrefresh).remove();
+      // document.getElementById(channelnameButtonIDclose).remove();
+      // document.getElementById(channelnameButtonIDrefresh).remove();
     })
 
     refreshButt.addEventListener('click',()=>{
-      // TODO
       console.log("testing refresh");
       document.getElementById(channelName + 'ID').remove();
       addEmbed(channelName);
@@ -173,6 +172,17 @@ function addEmbed(channelName){
       player.setVolume("0.01");
       player.play();
     });
+  }
+}
+
+function refreshAll(){
+  var streamname ="";
+  // console.log("refreshing all ip. There are total of "+document.getElementById('twitch-container').childElementCount);
+  // TODO
+  for (let i = 0; i < document.getElementById('twitch-container').childElementCount; i++) {
+    // streamname= document.getElementById('twitch-container').firstElementChild.id.substring(0,document.getElementById('twitch-container').firstElementChild.id.length-2);
+    // console.log(streamname);
+    addEmbed(document.getElementById('twitch-container').firstElementChild.id.substring(0,document.getElementById('twitch-container').firstElementChild.id.length-2));
   }
 }
 
