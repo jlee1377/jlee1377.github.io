@@ -27,6 +27,7 @@ function stickyHeader() {
   }
 }
 
+{
 // IP add function to auto populate list with user input
 // document.getElementById('').
 // // API login
@@ -84,19 +85,22 @@ function stickyHeader() {
 // function renderStreams(data) {
 //     console.log(JSON.stringify(data));
 // }
+}
 
 // Adding embed of stream
 function addEmbed(channelName){
 
   // Clears submit box
   document.getElementById('twitchNameSearch').value="";
-  console.log("Cleared textbox?");
+  // console.log("Cleared textbox?");
 
   // if stream already exists or not
   if (document.getElementById(channelName+'ID') !== null) {
-    console.log("caught, skipping")
+    // console.log("caught, refreshing")
+    document.getElementById(channelName + 'ID').remove();
+    addEmbed(channelName);
   } else {
-    console.log("not caught, creating")
+    // console.log("not caught, creating")
     // Creating stream name id string
     var channelnameStreamDivID = channelName + 'ID'
 
@@ -109,12 +113,16 @@ function addEmbed(channelName){
     var newTwitchEmbed = document.createElement('article');
     newTwitchEmbed.id = channelnameStreamDivID;
 
-    // Creating button element
+    // Creating button element to close
     // console.log("creating button");
-    var butt = document.createElement('BUTTON');
-    butt.id=channelnameButtonID;
-    // console.log("alt x:");
-    butt.innerHTML="x";
+    var closeButt = document.createElement('BUTTON');
+    closeButt.id=channelnameButtonID+"close";
+    closeButt.innerHTML="x";
+
+    // Creating button element for refresh
+    var refreshButt = document.createElement('BUTTON');
+    refreshButt.id=channelnameButtonID+"refresh";
+    refreshButt.innerHTML="re"
 
     // Creating and setting embed containerLvl2 into containerLvl1
     // console.log("embedding new div into container")
@@ -135,15 +143,24 @@ function addEmbed(channelName){
 
     // Adding button listener event
     // console.log("creating button listener");
-    butt.addEventListener('click',() => {
+    closeButt.addEventListener('click',() => {
       // console.log('click');
       document.getElementById(channelnameStreamDivID).remove();
-      document.getElementById(channelnameButtonID).remove();
+      document.getElementById(channelnameButtonIDclose).remove();
+      document.getElementById(channelnameButtonIDrefresh).remove();
+    })
+
+    refreshButt.addEventListener('click',()=>{
+      // TODO
+      console.log("testing refresh");
+      document.getElementById(channelName + 'ID').remove();
+      addEmbed(channelName);
     })
 
     // Appending button into ContainerLvl2
     // console.log("appending button");
-    document.getElementById(channelnameStreamDivID).appendChild(butt);
+    document.getElementById(channelnameStreamDivID).appendChild(closeButt);
+    document.getElementById(channelnameStreamDivID).appendChild(refreshButt);
     // console.log("attempting to add x");
     // document.getElementById(channelnameButtonID).innerHTML="x";
     // console.log("x appended");
