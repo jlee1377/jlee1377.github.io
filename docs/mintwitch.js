@@ -33,8 +33,8 @@ function stickyHeader() {
 // var access_token;
 // var token_type;
 // var authorizationObject;
-// let clientId = 'ggcot3uct35mk6sgtotwuacv0yqq5b'; //maybe put in global?
-// let clientSecret = 'u8da27aoe6cvj85bw454opk5czmfyv'; //maybe put into global?
+// let clientId = config.clientID; //maybe put in global?
+// let clientSecret = config.clientSecret; //maybe put into global?
 // function twitchLogin(){
 //   let authURL = 'https://id.twitch.tv/oauth2/authorize';
 //   // let tokeURL = 'https://id.twitch.tv/oauth2/token';
