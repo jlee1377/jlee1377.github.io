@@ -33,6 +33,8 @@ function stickyHeader() {
 // var access_token;
 // var token_type;
 // var authorizationObject;
+// let clientId = config.clientID; //maybe put in global?
+// let clientSecret = config.clientSecret; //maybe put into global?
 // function twitchLogin(){
 //   let clientId = config.clientID; //maybe put in global?
 //   let clientSecret = config.clientSecret; //maybe put into global?
