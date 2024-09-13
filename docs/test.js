@@ -34,8 +34,8 @@ function stickyHeader() {
 // var token_type;
 // var authorizationObject;
 function twitchLogin(){
-  let clientId = config.clientID; //maybe put in global?
-  let clientSecret = config.clientSecret; //maybe put into global?
+  // let clientId = config.clientID; //maybe put in global?
+  // let clientSecret = config.clientSecret; //maybe put into global?
   let authURL = 'https://id.twitch.tv/oauth2/authorize';
   // let tokeURL = 'https://id.twitch.tv/oauth2/token';
   let url = 'https://id.twitch.tv/oauth2/token?response_type=token&client_id='+clientId+'&&redirect_uri=http://localhost:8000/&scope=user%3Aread%3Afollows';
