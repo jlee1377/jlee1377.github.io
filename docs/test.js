@@ -33,50 +33,50 @@ function stickyHeader() {
 // var access_token;
 // var token_type;
 // var authorizationObject;
-// function twitchLogin(){
-//   let clientId = config.clientID; //maybe put in global?
-//   let clientSecret = config.clientSecret; //maybe put into global?
-//   let authURL = 'https://id.twitch.tv/oauth2/authorize';
-//   // let tokeURL = 'https://id.twitch.tv/oauth2/token';
-//   let url = 'https://id.twitch.tv/oauth2/token?response_type=token&client_id='+clientId+'&&redirect_uri=http://localhost:8000/&scope=user%3Aread%3Afollows';
+function twitchLogin(){
+  let clientId = config.clientID; //maybe put in global?
+  let clientSecret = config.clientSecret; //maybe put into global?
+  let authURL = 'https://id.twitch.tv/oauth2/authorize';
+  // let tokeURL = 'https://id.twitch.tv/oauth2/token';
+  let url = 'https://id.twitch.tv/oauth2/token?response_type=token&client_id='+clientId+'&&redirect_uri=http://localhost:8000/&scope=user%3Aread%3Afollows';
 
-//   return fetch(url, { method: 'POST', })
-//   .then((res) => res.json())
-//   .then((data) => {
-//     console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
-//     console.log(data);
-//     access_token = data.access_token;
-//     token_type = data.token_type;
-//     // let { access_token, expires_in, token_type } = authorizationObject;
+  return fetch(url, { method: 'POST', })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
+    console.log(data);
+    access_token = data.access_token;
+    token_type = data.token_type;
+    // let { access_token, expires_in, token_type } = authorizationObject;
 
-//     return data});
-// }
-// async function getLiveFollowingStreams(){
-//   const endpoint = 'https://api.twitch.tv/helix/streams';
-// //   // try {
-//     let authorizationObject = await twitchLogin();
-//     let { access_token, expires_in, token_type } = authorizationObject;
-//     // token_type first letter must be uppercase
-//     token_type =
-//     token_type.substring(0, 1).toUpperCase() +
-//     token_type.substring(1, token_type.length);
+    return data});
+}
+async function getLiveFollowingStreams(){
+  const endpoint = 'https://api.twitch.tv/helix/streams';
+//   // try {
+    let authorizationObject = await twitchLogin();
+    let { access_token, expires_in, token_type } = authorizationObject;
+    // token_type first letter must be uppercase
+    token_type =
+    token_type.substring(0, 1).toUpperCase() +
+    token_type.substring(1, token_type.length);
 
-//     let authorization = token_type + ' ' + access_token;
+    let authorization = token_type + ' ' + access_token;
 
-//     console.log(authorization);
+    console.log(authorization);
 
-//     let headers = {
-//     authorization,
-//     'Client-Id': clientId,
-//     };
+    let headers = {
+    authorization,
+    'Client-Id': clientId,
+    };
 
-//     fetch(endpoint, {
-//     headers,
-//     })
-//     .then((res) => res.json())
-//     .then((data) => renderStreams(data));
-//     console.log('getLiveFollowingStreams finished');
-// }
+    fetch(endpoint, {
+    headers,
+    })
+    .then((res) => res.json())
+    .then((data) => renderStreams(data));
+    console.log('getLiveFollowingStreams finished');
+}
   // catch (err) {
 //   //   console.error('error: ' + err.message)
 //   // }
