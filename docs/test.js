@@ -1,6 +1,20 @@
 // cd Documents/GitHub/jlee1377.github.io/docs
 // python3 -m http.server
 
+// React tests
+
+// console.log("react testing");
+// import { createRoot } from 'react-dom/client';
+
+// // Clear the existing HTML content
+// document.body.innerHTML = '<div id="app"></div>';
+
+// // Render your React component instead
+// const root = createRoot(document.getElementById('app'));
+// root.render(<h1>Hello, world</h1>);
+
+// Actual code
+
 console.log("script initi");
 
 // Add addEventListener to textbox to allow it to be "Enter"able
