@@ -1,6 +1,5 @@
 <!-- Run python local host first before testing -->
 <!--
-  cd Documents/GitHub/jlee1377.github.io/docs
   python3 -m http.server
 -->
 
@@ -61,6 +60,14 @@
       </button> -->
 
       <!-- <a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect with Twitch</a> -->
+
+      <button type="button" id="twitchLogin"
+        onclick="getLiveFollowingStreams()">Connect to Twitch
+      </button>
+
+<!--       <button type="button" id="twitchLogin"
+        onclick="twitchLogin()">Connect to Twitch
+      </button> -->
 
       <!-- Testing output purposes -->
       <p id="test_input"></p>
