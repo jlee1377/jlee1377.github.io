@@ -1,7 +1,6 @@
 <!-- Run python local host first before testing -->
 <!--
   python3 -m http.server
-
   attempt to run the call while at home, might be vpn or extension in the works
 -->
 
@@ -12,6 +11,32 @@
   <title>MinTwitch</title>
   <body>
     <div class="header" id="header">
+
+      <!-- Submit box -->
+      <input
+        style="
+          <!-- background-color:#362e37; -->
+          text-color:#000000"
+        type="search"
+        id="twitchNameSearch"
+        placeholder="Enter twitch name">
+
+      <!-- button to submit stream name -->
+      <button type="button"
+        id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
+      </button>
+
+      <button type="button" id="refreshAllStreams"
+        onclick="refreshAll()">Refresh all Streams
+      </button>
+
+      <button type="button" id="clearAllArticles"
+        onclick="clearAll()">Clear all Streams
+      </button>
+
+      <button type="button" id="followPageLink"
+        onclick="window.open('https://www.twitch.tv/directory/following/live')">Followed
+      </button>
 
       <button type="button" id="twitchLogin"
         onclick="twitchLogin()">Connect to Twitch
