@@ -1,6 +1,5 @@
 <!-- Run python local host first before testing -->
 <!--
-  cd Documents/GitHub/jlee1377.github.io/docs
   python3 -m http.server
 -->
 
@@ -55,12 +54,14 @@
       <button type="button" id="followPageLink"
         onclick="window.open('https://www.twitch.tv/directory/following/live')">Followed
       </button>
-<!-- 
+
       <button type="button" id="twitchLogin"
+        onclick="getLiveFollowingStreams()">Connect to Twitch
+      </button>
+
+<!--       <button type="button" id="twitchLogin"
         onclick="twitchLogin()">Connect to Twitch
       </button> -->
-
-      <!-- <a href="https://id.twitch.tv/oauth2/authorize?[parameters]">Connect with Twitch</a> -->
 
       <!-- Testing output purposes -->
       <p id="test_input"></p>
