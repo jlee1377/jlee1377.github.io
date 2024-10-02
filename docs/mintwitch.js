@@ -169,6 +169,8 @@ function addEmbed(channelName){
       player.setQuality("160p");
       player.setVolume("0.01");
       player.play();
+
+      
     });
   }
 }
