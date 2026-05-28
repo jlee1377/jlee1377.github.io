@@ -28,34 +28,6 @@ function stickyHeader() {
   }
 }
 
-// IP add function to auto populate list with user input
-// document.getElementById('').
-
-// API login
-
-// This is only called through function getLiveFollowingStreams()
-function twitchLogin(){
-  let clientId = config.clientID; //maybe put in global?
-  let clientSecret = config.clientSecret; //maybe put into global?
-
-  // this is non-client request
-  // let url = `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`;
-  // this is implicit grant request
-  let url = `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=http://localhost:8000&scopes=user%3Aread%3Afollows`;
-  // this is device code grant flow 
-  // let url = `https://id.twitch.tv/oauth2/device?client_id=${clientId}&scopes=user%3Aread%3Afollows`;
-  // console.log(url);
-  return fetch(url, { method: 'POST', })
-  .then((res) => res.json())
-  .then((data) => {
-    // console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
-    console.log(data);
-    // access_token = data.access_token;
-    // token_type = data.token_type;
-
-    return data});
-}
-
 // Call this function in html
 async function getLiveFollowingStreams(){
   const endpoint = 'https://api.twitch.tv/helix/streams/followed';
