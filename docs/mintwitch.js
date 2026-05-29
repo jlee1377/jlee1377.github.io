@@ -35,17 +35,13 @@ function stickyHeader() {
 
 // This is only called through function getLiveFollowingStreams()
 function twitchLogin(){
-  let clientId = config.clientID; //maybe put in global?
-  let clientSecret = config.clientSecret; //maybe put into global?
+  let clientId = 'ckkxce6gu6117bstm9n5o7q1lpdxma'; //maybe put in global?
 
-  // this is non-client request
-  // let url = `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`;
   // this is implicit grant request
-  let url = `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=http://localhost:8000&scopes=user%3Aread%3Afollows`;
-  // this is device code grant flow 
-  // let url = `https://id.twitch.tv/oauth2/device?client_id=${clientId}&scopes=user%3Aread%3Afollows`;
-  // console.log(url);
-  return fetch(url, { method: 'POST', })
+  let url = 'https://id.twitch.tv/oauth2/authorize?response_type=token&client_id='&clientID&'&redirect_uri=http://localhost:3000&scope=user%3Aread%3Afolllows'
+
+  // this llooks wrong, might belong in IF NOT LOGGED IN block
+  return fetch(url, { method: 'GET', })
   .then((res) => res.json())
   .then((data) => {
     // console.log('twitchLogin() completed. ' + data.token_type + ' ' + data.access_token);
@@ -56,21 +52,22 @@ function twitchLogin(){
     return data});
 }
 
-// Call this function in html
+// Call this function in html everytime you click dropdown
 async function getLiveFollowingStreams(){
   const endpoint = 'https://api.twitch.tv/helix/streams/followed';
 
-  let authorizationObject = await twitchLogin();
-  let { access_token, expires_in, token_type } = authorizationObject;
+  // TODO if not logged in, have connect button appear. Otherwise, dropdown appears
+  if ("not logged in/auth"){
+    let authorizationObject = await twitchLogin();
+    let { access_token, expires_in, token_type } = authorizationObject;
 
-  // [non-client request] token_type first letter must be uppercase
-  // token_type =
-  // token_type.substring(0, 1).toUpperCase() +
-  // token_type.substring(1, token_type.length);
+    // TODO GET user id via token
 
-  // [non-client request]
-  // let authorization = `${token_type} ${access_token}`;
-  // console.log(authorization);
+  } else {
+    // TODO show dropdown
+  }
+
+  // TODO GET liist of live streams
 
   let headers = {
     'user_id':authorizationObject.user_code,
